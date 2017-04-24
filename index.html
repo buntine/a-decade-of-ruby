@@ -32,6 +32,8 @@
           </code></pre>
         </section>
         <section>
+          <!-- The higher-order function 'reduce' can perform the same task without requiring a mutated running variable.
+          -->
           <pre><code data-trim data-noescape class="ruby">
             def sum(numbers)
               numbers.reduce(0) do |total, n|
@@ -41,6 +43,8 @@
           </code></pre>
         </section>
         <section>
+          <!-- If we pass a symbol, the method it names will be applied to each item in the collection (along with an accumulator).
+          -->
           <pre><code data-trim data-noescape class="ruby">
             def sum(numbers)
               numbers.reduce(0, :+)
@@ -48,11 +52,17 @@
           </code></pre>
         </section>
         <section>
+          <!-- First argument defaults to the first item in the collection.
+               And now the abstraction is not even necessary.
+          -->
           <pre><code data-trim data-noescape class="ruby">
             numbers.reduce(:+)
           </code></pre>
         </section>
         <section>
+          <!-- Performance hit.
+               Some languages smart enough to optimise. Ruby is not one of them.
+          -->
           <pre><code data-trim data-noescape class="ruby">
             def sum_multiples(numbers, multiple)
               numbers
@@ -65,6 +75,7 @@
           <ul>
             <li>Higher-order functions are very powerful</li>
             <li>Weigh your options - performance matters</li>
+            <li>Look for patterns of code smells</li>
             <li>Know the standard libraries well</li>
             <li>Know when to define abstractions</li>
           </ul>
