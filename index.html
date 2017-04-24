@@ -18,6 +18,40 @@
         <section>Hi! I'm <strong>Andrew Buntine</strong></section>
         <section>The Technical Director at <strong>Hardhat Digital</strong></section>
         <section>I also publish code at <strong>github.com/buntine</strong></section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def sum(numbers)
+              total = 0
+
+              numbers.each do |n|
+                total = total + n
+              end
+
+              total
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def sum(numbers)
+              numbers.reduce(0) do |total, n|
+                total + n
+              end
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def sum(numbers)
+              numbers.reduce(0, :+)
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            numbers.reduce(:+)
+          </code></pre>
+        </section>
       </div>
     </div>
 
