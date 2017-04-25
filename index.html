@@ -96,6 +96,37 @@
           Metaprogramming.
         </section>
         <section>
+          <pre><code data-trim data-noescape class="ruby">
+POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
+
+def method_missing(s, *args, &amp;b)
+  if POSSIBLE_VERBS.include? s
+    begin
+      r.send(s, *args, &amp;b)
+    rescue RestClient::RequestFailed =&gt; e
+      print STDERR, e.response.body
+      raise e
+    end
+  else
+    super
+  end
+end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+def get(*args, &amp;)
+  r.get(*args, &amp;)
+end
+
+def post(*args, &amp;b)
+  r.post(*args, &amp;b)
+end
+
+# ...
+          </code></pre>
+        </section>
+        <section>
           Dynamic typing. No type declations, no compiler. Lots of runtime errors. Hence unit testing...
         </section>
         <section>
