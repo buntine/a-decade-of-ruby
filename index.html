@@ -93,37 +93,64 @@
           <p>Know the standard libraries well</p>
         </section>
         <section>
-          Metaprogramming.
-        </section>
-        <section>
           <pre><code data-trim data-noescape class="ruby">
-POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
+          class MonthlyData
+            def january
+              fetch_data(1)
+            end
 
-def method_missing(s, *args, &amp;b)
-  if POSSIBLE_VERBS.include? s
-    begin
-      r.send(s, *args, &amp;b)
-    rescue RestClient::RequestFailed =&gt; e
-      print STDERR, e.response.body
-      raise e
-    end
-  else
-    super
-  end
-end
+            def february
+              fetch_data(2)
+            end
+
+            def march
+              fetch_data(3)
+            end
+
+            # ...
+          end
           </code></pre>
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
-def get(*args, &amp;)
-  r.get(*args, &amp;)
-end
+            class MonthlyData
+              Date::MONTHNAMES.each_with_index do |mn, i|
+                define_method(mn.downcase) do
+                  fetch_data(i)
+                end
+              end
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
 
-def post(*args, &amp;b)
-  r.post(*args, &amp;b)
-end
+            def method_missing(s, *args, &amp;b)
+              if POSSIBLE_VERBS.include? s
+                begin
+                  r.send(s, *args, &amp;b)
+                rescue RestClient::RequestFailed =&gt; e
+                  print STDERR, e.response.body
+                  raise e
+                end
+              else
+                super
+              end
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def get(*args, &amp;b)
+              r.get(*args, &amp;b)
+            end
 
-# ...
+            def post(*args, &amp;b)
+              r.post(*args, &amp;b)
+            end
+
+            # ...
           </code></pre>
         </section>
         <section>

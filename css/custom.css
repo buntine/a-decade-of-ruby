@@ -3,3 +3,7 @@
   box-shadow: none;
   height: 60vh;
 }
+
+.reveal pre code {
+  max-height: 480px;
+}
