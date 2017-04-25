@@ -123,6 +123,9 @@
           </code></pre>
         </section>
         <section>
+          <!-- Static data extremely unlikely to change. 
+               Not enough of them to warrant complexity.
+          -->
           <pre><code data-trim data-noescape class="ruby">
             class Request
               POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
@@ -162,6 +165,17 @@
         </section>
         <section>
           <p>But it's a double-edged sword that should be handled carefully!</p>
+        </section>
+        <section>
+          <!-- Open class example
+          -->
+          <pre><code data-trim data-noescape class="ruby">
+            class String
+              def excited(amount=1)
+                "#{self}#{"!" * amount}"
+              end
+            end
+          </code></pre>
         </section>
         <section>
           Dynamic typing. No type declations, no compiler. Lots of runtime errors. Hence unit testing...
