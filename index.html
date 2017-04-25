@@ -124,33 +124,37 @@
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
-            POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
+            class Request
+              POSSIBLE_VERBS = ['get', 'put', 'post', 'delete']
 
-            def method_missing(s, *args, &amp;b)
-              if POSSIBLE_VERBS.include? s
-                begin
-                  r.send(s, *args, &amp;b)
-                rescue RestClient::RequestFailed =&gt; e
-                  print STDERR, e.response.body
-                  raise e
+              def method_missing(s, *args, &amp;b)
+                if POSSIBLE_VERBS.include? s
+                  begin
+                    r.send(s, *args, &amp;b)
+                  rescue RestClient::RequestFailed =&gt; e
+                    print STDERR, e.response.body
+                    raise e
+                  end
+                else
+                  super
                 end
-              else
-                super
               end
             end
           </code></pre>
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
-            def get(*args, &amp;b)
-              r.get(*args, &amp;b)
-            end
+            class Request
+              def get(*args, &amp;b)
+                r.get(*args, &amp;b)
+              end
 
-            def post(*args, &amp;b)
-              r.post(*args, &amp;b)
-            end
+              def post(*args, &amp;b)
+                r.post(*args, &amp;b)
+              end
 
-            # ...
+              # ...
+            end
           </code></pre>
         </section>
         <section>
@@ -173,7 +177,6 @@
 
     <script src="/lib/js/head.min.js"></script>
     <script src="/js/reveal.js"></script>
-
     <script>
       Reveal.initialize({
         history: true,
