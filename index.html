@@ -174,7 +174,8 @@
           </code></pre>
         </section>
         <section>
-          <!-- Open class example
+          <!-- Open class example.
+               Monkey-patching or Duck-punching.
           -->
           <pre><code data-trim data-noescape class="ruby">
             class String
@@ -191,7 +192,7 @@
         </section>
         <section>
           <!-- Favours syntax over semantics.
-               Now Fixnum has a method that returns a date! It has no business being coupled to Date.
+               Now Fixnum has a method that returns a date (actually an ActiveSupport::Duration)! It has no business being coupled to Date.
                But it's beautiful to look at.
           -->
           <pre><code data-trim data-noescape class="ruby">
