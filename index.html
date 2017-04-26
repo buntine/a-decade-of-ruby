@@ -161,10 +161,17 @@
           </code></pre>
         </section>
         <section>
-          <p>Metaprogramming is a very powerful technique</p>
+          <pre><code data-trim data-noescape class="ruby">
+            def excited(sentence, amount=1)
+              "#{sentence}#{"!" * amount}"
+            end
+          </code></pre>
         </section>
         <section>
-          <p>But it's a double-edged sword that should be handled carefully!</p>
+          <pre><code data-trim data-noescape class="ruby">
+            sentence = "Awesome"
+            puts excited(sentence, 2)  # "Awesome!!"
+          </code></pre>
         </section>
         <section>
           <!-- Open class example
@@ -176,6 +183,26 @@
               end
             end
           </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            puts "Awesome".excited(2)  # "Awesome!!"
+          </code></pre>
+        </section>
+        <section>
+          <!-- Favours syntax over semantics.
+               Now Fixnum has a method that returns a date! It has no business being coupled to Date.
+               But it's beautiful to look at.
+          -->
+          <pre><code data-trim data-noescape class="ruby">
+            3.days.ago
+          </code></pre>
+        </section>
+        <section>
+          <p>Metaprogramming is a very powerful technique</p>
+        </section>
+        <section>
+          <p>But it's a double-edged sword that should be handled carefully!</p>
         </section>
         <section>
           Dynamic typing. No type declations, no compiler. Lots of runtime errors. Hence unit testing...
