@@ -206,7 +206,50 @@
           <p>But it's a double-edged sword that should be handled carefully!</p>
         </section>
         <section>
-          Dynamic typing. No type declations, no compiler. Lots of runtime errors. Hence unit testing...
+          <pre><code data-trim data-noescape class="ruby">
+            def first_friend
+              friends = JSON
+                          .parse(File.read("friends.json"))
+                          .sort_by { |a, b| a["date"] <=> b["date"] }
+
+              friends.first
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def last_friend
+              friends = JSON
+                          .parse(File.read("friends.json"))
+                          .sort_by { |a, b| b["date"] <=> a["date"] }
+
+              friends.first
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def find_friend(&amp;b)
+              friends = JSON.parse(File.read("friends.json"))
+              sorted = yield friends              
+
+              friends.first
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            find_friend do |fs|
+              fs.sort_by { |a, b| a["date"] <=> b["date"] }
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            find_friend do |fs|
+              fs.sort_by { |a, b| b["date"] <=> a["date"] }
+            end
+          </code></pre>
         </section>
         <section>
           Generic functions. Blocks and yield.
