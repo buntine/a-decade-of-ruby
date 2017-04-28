@@ -210,7 +210,7 @@
             def first_friend
               friends = JSON
                           .parse(File.read("friends.json"))
-                          .sort_by { |a, b| a["date"] <=> b["date"] }
+                          .sort { |a, b| a["date"] <=> b["date"] }
 
               friends.first
             end
@@ -221,7 +221,7 @@
             def last_friend
               friends = JSON
                           .parse(File.read("friends.json"))
-                          .sort_by { |a, b| b["date"] <=> a["date"] }
+                          .sort { |a, b| b["date"] <=> a["date"] }
 
               friends.first
             end
@@ -233,26 +233,29 @@
               friends = JSON.parse(File.read("friends.json"))
               sorted = yield friends              
 
-              friends.first
+              sorted.first
             end
           </code></pre>
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
             find_friend do |fs|
-              fs.sort_by { |a, b| a["date"] <=> b["date"] }
+              fs.sort { |a, b| a["date"] <=> b["date"] }
             end
           </code></pre>
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
             find_friend do |fs|
-              fs.sort_by { |a, b| b["date"] <=> a["date"] }
+              fs.sort { |a, b| b["date"] <=> a["date"] }
             end
           </code></pre>
         </section>
         <section>
-          Generic functions. Blocks and yield.
+          First-class functions are one of the greatest (and oldest!) ideas in all of computer science
+        </section>
+        <section>
+          Ruby's blocks allow us to write generic functions
         </section>
         <section>
           Data structures.
