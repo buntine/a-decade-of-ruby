@@ -161,6 +161,26 @@
           </code></pre>
         </section>
         <section>
+          <!-- Simpler, non-meta version of the months example.
+          -->
+          <pre><code data-trim data-noescape class="ruby">
+            class MonthlyData
+              def for_month(m)
+                fetch_data(Date::MONTHNAMES.index(m))
+              end
+            end
+          </code></pre>
+        </section>
+        <section>
+          <p>Metaprogramming is a very powerful technique</p>
+        </section>
+        <section>
+          <p>But it's a double-edged sword that should be handled carefully!</p>
+        </section>
+        <section>
+          <p>Often, a non-meta solution is much simpler to maintain in the long term</p>
+        </section>
+        <section>
           <pre><code data-trim data-noescape class="ruby">
             def excited(sentence, amount=1)
               "#{sentence}#{"!" * amount}"
@@ -198,12 +218,6 @@
           <pre><code data-trim data-noescape class="ruby">
             3.days.ago
           </code></pre>
-        </section>
-        <section>
-          <p>Metaprogramming is a very powerful technique</p>
-        </section>
-        <section>
-          <p>But it's a double-edged sword that should be handled carefully!</p>
         </section>
         <section>
           <pre><code data-trim data-noescape class="ruby">
