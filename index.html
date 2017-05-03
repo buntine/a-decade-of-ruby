@@ -25,7 +25,7 @@
               total = 0
 
               for n in numbers do
-                total = total + n
+                total += n
               end
 
               total
@@ -69,6 +69,21 @@
               numbers
                 .reject { |n| n % multiple &gt; 0}
                 .reduce(:+)
+            end
+          </code></pre>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape class="ruby">
+            def sum_multiples(numbers, multiple)
+              total = 0
+
+              for n in numbers do
+                if n % multiple &gt; 0
+                  total += n
+                end
+              end
+
+              total
             end
           </code></pre>
         </section>
